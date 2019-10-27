@@ -9,15 +9,38 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dev.eshilov</groupId>
-	<artifactId>nexigntask</artifactId>
+	<artifactId>subscribers</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>nexigntask</name>
-	<description>Nexign Task</description>
+	<name>subscribers</name>
+	<description>Subscribers</description>
 
 	<properties>
 		<java.version>11</java.version>
+		<!--suppress UnresolvedMavenProperty -->
+		<db.host>${env.DB_HOST}</db.host>
+		<!--suppress UnresolvedMavenProperty -->
+		<db.schema>${env.DB_SCHEMA}</db.schema>
+		<!--suppress UnresolvedMavenProperty -->
+		<db.user>${env.DB_USER}</db.user>
+		<!--suppress UnresolvedMavenProperty -->
+		<db.password>${env.DB_PASSWORD}</db.password>
 	</properties>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<db.host>localhost:3306</db.host>
+				<db.schema>subscribers</db.schema>
+				<db.user>root</db.user>
+				<db.password>123456</db.password>
+			</properties>
+		</profile>
+	</profiles>
 
 	<dependencies>
 		<dependency>
@@ -34,6 +57,13 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.18</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -57,6 +87,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>6.0.7</version>
+				<configuration>
+					<url>jdbc:mysql://${db.host}</url>
+					<user>${db.user}</user>
+					<password>${db.password}</password>
+					<schemas>
+						<schema>${db.schema}</schema>
+					</schemas>
+					<locations>
+						<location>classpath:db/migration</location>
+					</locations>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
