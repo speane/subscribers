@@ -18,9 +18,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<!--suppress UnresolvedMavenProperty -->
-		<db.host>${env.DB_HOST}</db.host>
-		<!--suppress UnresolvedMavenProperty -->
-		<db.schema>${env.DB_SCHEMA}</db.schema>
+		<db.url>${env.DB_URL}</db.url>
 		<!--suppress UnresolvedMavenProperty -->
 		<db.user>${env.DB_USER}</db.user>
 		<!--suppress UnresolvedMavenProperty -->
@@ -34,8 +32,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<db.host>localhost:3306</db.host>
-				<db.schema>subscribers</db.schema>
+				<db.url>localhost:3306</db.url>
 				<db.user>root</db.user>
 				<db.password>123456</db.password>
 			</properties>
@@ -47,9 +44,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
 		<dependency>
@@ -101,14 +104,14 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>6.0.7</version>
 				<configuration>
-					<url>jdbc:mysql://${db.host}</url>
+					<url>jdbc:mysql://${db.url}</url>
 					<user>${db.user}</user>
 					<password>${db.password}</password>
 					<schemas>
-						<schema>${db.schema}</schema>
+						<schema>subscribers</schema>
 					</schemas>
 					<locations>
-						<location>classpath:db/migration</location>
+						<location>filesystem:src/main/resources/db</location>
 					</locations>
 				</configuration>
 			</plugin>
