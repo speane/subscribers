@@ -1,0 +1,1 @@
+ALTER TABLE subscriber ADD COLUMN role ENUM ('USER', 'ADMIN') NOT NULL;

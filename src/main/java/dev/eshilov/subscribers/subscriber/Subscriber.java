@@ -31,4 +31,8 @@ public class Subscriber {
     private long balance;
 
     private String pin;
+
+    @Column(columnDefinition = "enum('USER', 'ADMIN')")
+    @Enumerated(EnumType.STRING)
+    private SubscriberRole role;
 }
