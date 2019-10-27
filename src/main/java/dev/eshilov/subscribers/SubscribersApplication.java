@@ -1,13 +1,13 @@
-package dev.eshilov.nexigntask;
+package dev.eshilov.subscribers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NexigntaskApplication {
+public class SubscribersApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NexigntaskApplication.class, args);
+		SpringApplication.run(SubscribersApplication.class, args);
 	}
 
 }

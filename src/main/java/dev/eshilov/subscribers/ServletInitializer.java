@@ -1,4 +1,4 @@
-package dev.eshilov.nexigntask;
+package dev.eshilov.subscribers;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(NexigntaskApplication.class);
+		return application.sources(SubscribersApplication.class);
 	}
 
 }

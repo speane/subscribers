@@ -1,10 +1,10 @@
-package dev.eshilov.nexigntask;
+package dev.eshilov.subscribers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NexigntaskApplicationTests {
+class SubscribersApplicationTests {
 
 	@Test
 	void contextLoads() {
