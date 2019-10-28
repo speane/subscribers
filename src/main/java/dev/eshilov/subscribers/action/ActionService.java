@@ -2,6 +2,6 @@ package dev.eshilov.subscribers.action;
 
 public interface ActionService {
 
-    void call(String number);
-    void sms(String number);
+    ActionResponse call(String number);
+    ActionResponse sms(String number);
 }

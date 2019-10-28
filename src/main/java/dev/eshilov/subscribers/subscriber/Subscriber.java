@@ -35,4 +35,8 @@ public class Subscriber {
     @Column(columnDefinition = "enum('USER', 'ADMIN')")
     @Enumerated(EnumType.STRING)
     private SubscriberRole role;
+
+    private int callCount;
+
+    private int smsCount;
 }

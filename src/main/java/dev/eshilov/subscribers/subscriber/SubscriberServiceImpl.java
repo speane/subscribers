@@ -15,4 +15,9 @@ public class SubscriberServiceImpl implements SubscriberService {
     public Optional<Subscriber> findByNumber(String number) {
         return subscriberRepository.findByNumber(number);
     }
+
+    @Override
+    public Subscriber getByNumber(String number) {
+        return subscriberRepository.getByNumber(number);
+    }
 }

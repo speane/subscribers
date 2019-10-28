@@ -7,4 +7,6 @@ import java.util.Optional;
 public interface SubscriberRepository extends JpaRepository<Subscriber, Long> {
 
     Optional<Subscriber> findByNumber(String number);
+
+    Subscriber getByNumber(String number);
 }
